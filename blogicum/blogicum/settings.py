@@ -22,7 +22,6 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'django_bootstrap5',
     'debug_toolbar',
-
 ]
 
 MIDDLEWARE = [

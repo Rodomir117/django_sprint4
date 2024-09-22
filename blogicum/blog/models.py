@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from .constants import TEXT_LENGHT, TEXT_SNIPPET_LENGTH
+from .constants import TEXT_LENGHT
 
 User = get_user_model()
 
@@ -59,7 +59,7 @@ class Post(BaseModel):
         verbose_name_plural = 'Публикации'
 
     def __str__(self):
-        return self.title[:TEXT_SNIPPET_LENGTH]
+        return self.title
 
 
 class Category(BaseModel):
@@ -91,7 +91,7 @@ class Location(BaseModel):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.name[:TEXT_SNIPPET_LENGTH]
+        return self.name
 
 
 class Comment(BaseModel):
@@ -115,5 +115,5 @@ class Comment(BaseModel):
         ordering = ('created_at',)
 
     def __str__(self):
-        return (f'{self.text[:TEXT_SNIPPET_LENGTH]}'
+        return (f'{self.text}'
                 f'от {self.author}')

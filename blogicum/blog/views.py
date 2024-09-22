@@ -11,7 +11,7 @@ def index(request):
     """Главная страница."""
     page_obj = get_paginator(request, get_queryset(
         filters=True,
-        annotation=True)
+        with_comments=True)
     )
     context = {'page_obj': page_obj}
     return render(request, 'blog/index.html', context)
