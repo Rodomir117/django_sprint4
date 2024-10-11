@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
-from .constants import TEXT_LENGHT
+from django.utils.text import Truncator
+from .constants import TEXT_LENGHT, WORDS_LENGHT
 
 User = get_user_model()
 
@@ -59,7 +59,7 @@ class Post(BaseModel):
         verbose_name_plural = 'Публикации'
 
     def __str__(self):
-        return self.title
+        return (Truncator(self.title).words(WORDS_LENGHT))
 
 
 class Category(BaseModel):
@@ -77,7 +77,7 @@ class Category(BaseModel):
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return self.title
+        return (Truncator(self.title).words(WORDS_LENGHT))
 
 
 class Location(BaseModel):
@@ -91,7 +91,7 @@ class Location(BaseModel):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.name
+        return (Truncator(self.name).words(WORDS_LENGHT))
 
 
 class Comment(BaseModel):
